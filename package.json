@@ -1,0 +1,14 @@
+{
+  "name": "converter",
+  "version": "1.0.0",
+  "description": "Prueba test",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --reporter spec"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "mocha": "^8.2.1"
+  }
+}
