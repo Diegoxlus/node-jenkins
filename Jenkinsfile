@@ -7,6 +7,7 @@ pipeline {
 
     stage('Cloning Git') {
       steps {
+        slackSend (color: '#FFFF00', message: "STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
         git 'https://github.com/Diegoxlus/node-jenkins'
       }
     }
