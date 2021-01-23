@@ -16,15 +16,24 @@ pipeline {
       steps {
         sh 'npm install'
         sh 'npm install --save-dev chai'
-        slackSend (color: '#FF0000', message: "Instalación de dependencias")
+        slackSend (color: '#00FF00', message: "Instalación de dependencias")
       }
     }
      
     stage('Test') {
       steps {
          sh 'npm test'
-         slackSend (color: '#FF0000', message: "Tests")
+         slackSend (color: '#00FF00', message: "Tests")
       }
     }      
   }
+  post {
+    success{
+        slackSend (color: '#00FF00', message: ":white_check_mark:INTEGRACIÓN CORRECTA :white_check_mark:")
+    }
+    failure {
+        slackSend (color: '#00FF00', message: ":red_circle: INTEGRACIÓN INCORRECTA :red_circle:")
+    }
+  }
+
 }
