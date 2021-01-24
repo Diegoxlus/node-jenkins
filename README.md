@@ -24,7 +24,7 @@
 
 - Cuando se acabe de añadir nos aparecerán una serie de pasos a seguir. Nosotros vamos a ir al final de la página y encontraremos los siguientes datos:
 
-   ![](img/KeySlack.jpg)
+   ![](img/KeySlack.JPG)
 
   :green_heart: En color verde tenemos el canal en el que se van a publicar las notificaciones, si nos fijamos debajo de la selección también tenemos la posibilidad de crear un canal nuevo.
 
@@ -34,7 +34,7 @@
 
 - Ya con nuestro Token en el portapapeles vamos a configurar el servidor Jenkins. Vamos a la opción :gear: Configurar el sistema, y al final de la configuración nos encontramos lo siguiente:
 
-  ![](img/SlackWithOutCredentials.jpg)
+  ![](img/SlackWithOutCredentials.JPG)
 
   :green_heart: En color verde tenemos nuestro espacio de trabajo, si hacemos click sobre el nombre en nuestro espacio de trabajo se despliega en un pequeño menú. Justo debajo del nombre del espacio aparece una URL del tipo espaciox.slack.com, espaciox es el nombre que tenemos que introducir en este campo.
 
@@ -46,7 +46,7 @@
 
 - Ahora vamos con las credenciales, si nos fijamos en la parte subrayada con el color amarillo, tenemos la opción de añadir una nueva, si hacemos click sobre ella veremos lo siguiente:
 
-  ![](img/AddSecretSlack.jpg)
+  ![](img/AddSecretSlack.JPG)
 
   
 
@@ -128,4 +128,4 @@ pipeline {
 
 - Si probamos ahora a construir nuestro proyecto desde Jenkins, deberíamos ver lo siguiente:
 
-  ![](img/SlackOK.jpg)
+  ![](img/SlackOK.JPG)
