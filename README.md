@@ -1,102 +1,70 @@
-# Servidor Jenkins en Rasperry Pi (NodeJS)
+# :family_man_boy_boy::family_man_girl:Integración con Slack :family_man_girl::family_man_boy_boy:
 
-## :information_source: Con este ejemplo, os vamos a mostrar como automatizar el proceso de clonado, instalación y por último pruebas (Con Mocha y Chai) en una pequeña aplicación en NodeJS.
+## :arrow_forward: Objetivo: Integrar Slack en nuestro proyecto, con la finalidad de que todo el equipo esté al tanto del estado de cada integración.
 
-### :exclamation: Requisitos:
+### :book: Pasos a seguir:
 
-1. Tener una raspberry Pi con un SO GNU/Linux (Este ejemplo fue realizado con Raspbian).
+- Instalar el plugin Slack Notification
 
-   :link: [Como instalar Raspbian en tu Raspberri](https://geekland.eu/instalar-raspbian-con-raspberry-pi-imager/)
+  ​	:link: ​[Plugin Slack Notification](https://plugins.jenkins.io/slack/)
 
-   
+- Crear un nuevo espacio de trabajo
 
-2. Habilitar SSH en la Raspberry para poder conectarnos con nuestro equipo y realizar la instalación de forma más cómoda (Se sugiere esta opción para no tener que manejar los dos equipos).
+  ​	:link: [Crear espacio de trabajo en Slack](https://slack.com/get-started#/create)
 
-   :link:[Como abrir el puerto SSH en tu Raspberry](https://blog.ahierro.es/habilitar-acceso-ssh-a-raspberry-pi/)
+- Integrar Jenkins en Slack, para ello vamos a nuestra cuenta, y seleccionamos la opción :electric_plug:Configurar aplicaciones.
 
-   
+  ![](img/AjustesSlack.jpg)
 
-3. Tener instalado Jenkins en la Raspberry
+- Y seleccionamos la opción "Añadir a Slack" que se ve en la imágen
 
-   :link: [Como instalar Jenkins en tu Raspberry](https://pimylifeup.com/jenkins-raspberry-pi/)
-
-### :memo:Pasos a seguir:
-
-1. Acceder al servidor Jenkins desde nuestro equipo
-
-   <img src="img/inicio.JPG" style="zoom:50%;" />
-
-   
-   
-   *Simplemente tenemos que escirbir en la URL la IP de nuestra Raspberry seguido de : y el puerto 8080, a continuación nos autenticamos con el usuario creado en la instalación de Jenkins.*
-   
-   
-
-2. Instalar el Plugin de NodeJS en nuestro servidor Jenkins
-
-   ![](img/Plugins.jpg)
-
-   
-
-   *Accedemos al apartado "Administrar Jenkins" y después en "Administrar Plugins" buscamos el plugin NodeJS y lo instalamos*.
-
-   
-
-3. Ahora tenemos que instalar NodeJS en nuestra Raspberry, necesario para poder realizar la compilación de nuestros proyectos. De paso ya instalamos npm (Empleado para ejecutar comandos como npm install), y mocha (Empleado para lanzar los tests) .
-
-   `pi:$ sudo apt install nodejs`
-
-   `pi:$ sudo apt install npm` 
-
-   `pi:$ npm install mocha` 
-
-   
-
-4. A continuación lanzamos el comando `pi:$ node -v`  que nos muestra la versión de nodeJS en nuestra Raspberry, supongamos que es la versión "X.X.X".
-
-   
-
-5. Para finalizar, solo faltaría configurar el plugin de NodeJS, indicándole la versión obtenida en el paso anterior. Para ello vamos a  :gear: Administrar Jenkins -> :hammer_and_wrench: Configuración global de herramientas y accedemos a "Añadir NodeJS", y veremos lo siguiente:
-
-   ![](img/Node.JPG)
-
-   
-
-   *En la versión de node debemos indicar la versión instalada  y añadir la configuración. En paquetes globales podemos instalar todos los paquetes que necesite nuestro proyecto, eso sí, solo los globales. Si instalamos un paquete de forma global y se necesita en la carpeta node_modules del proyecto no va a funcionar (Un ejemplo claro es la instalación de "chai", empleado en los tests). Este paquete debe instalarse después de instalar el proyecto.*
+  ![](img/AñadirJenkins.JPG)
 
 
 
-6. Una vez  finalizada la configuración ya podemos crear nuestro "Pipeline". Vamos a "Nueva tarea" y accedemos a "Pipeline", le damos un nombre y seleccionamos la opción que nos permite obtener el archivo de configuración de Jenkins (Jenkinsfile) del repositorio de GIT.
+- Cuando se acabe de añadir nos aparecerán una serie de pasos a seguir. Nosotros vamos a ir al final de la página y encontraremos los siguientes datos:
 
-   ![](img/Pipeline.jpg)
+   ![](img/KeySlack.jpg)
 
-   
-   
-   *:green_heart: En verde tenemos la opción que nos permite obtener el Pipeline del repositorio.*
-   
-   *:yellow_heart: En amarillo tenemos la ubicación del "Jenkinsfile", si el archivo se encontrase dentro de la carpeta "config" que cuelga del directorio principal la ruta sería: "config/Jenkinsfile"*.
-   
-   *:blue_heart: En azul tenemos el SCM, empleado para indicar de qué repositorio vamos a clonar el proyecto, las credenciales (en caso de que sean  necesarias) y la rama del proyecto que queremos probar, en nuestro caso la rama Master.*
+  :green_heart: En color verde tenemos el canal en el que se van a publicar las notificaciones, si nos fijamos debajo de la selección también tenemos la posibilidad de crear un canal nuevo.
+
+  :blue_heart: En color azul, tenemos el token que vamos a necesitar para realizar la vinculación con Jenkins, vamos a guardarlo en el portapapeles para usarlo a continuación. En mi caso no lo muestro porque es único para cada proyecto. Si por algún motivo nos roban el Token, siempre podemos volver a generarlo, eso sí también debemos cambiarlo en la configuración de Jenkins.
+
+  
+
+- Ya con nuestro Token en el portapapeles vamos a configurar el servidor Jenkins. Vamos a la opción :gear: Configurar el sistema, y al final de la configuración nos encontramos lo siguiente:
+
+  ![](img/SlackWithOutCredentials.jpg)
+
+  :green_heart: En color verde tenemos nuestro espacio de trabajo, si hacemos click sobre el nombre en nuestro espacio de trabajo se despliega en un pequeño menú. Justo debajo del nombre del espacio aparece una URL del tipo espaciox.slack.com, espaciox es el nombre que tenemos que introducir en este campo.
+
+  :yellow_heart: En amarillo tenemos las credenciales, donde vamos a introducir el token ofrecido por Slack, lo veremos mas adelante...
+
+  :blue_heart: En azul tenemos el canal donde se van a publicar las notificaciones, en mi caso tengo en mi espacio de Slack un canal llamado enseñanza.
+
+  
+
+- Ahora vamos con las credenciales, si nos fijamos en la parte subrayada con el color amarillo, tenemos la opción de añadir una nueva, si hacemos click sobre ella veremos lo siguiente:
+
+  ![](img/AddSecretSlack.jpg)
+
+  
+
+  :green_heart: En color verde tenemos el tipo de secreto que vamos a escoger, en este caso como es un token, seleccionamos "Secret text"-
+
+  :yellow_heart: En amarillo tenemos el token almacenado en el portapaples (Siempre puede volver a Slack y consultar el token). Simplemente tenemos que pegarlo.
+
+  :blue_heart: En azul tenemos el nombre que le vamos a dar a nuestras credenciales, en este caso nosotros las guardamos con el nombre "Slack-Jenkins".
+
+  
+
+- Con toda la configuración lista, solo falta modificar nuestro JenkinsFile, este ejemplo es bastante sencillo, si quieres aprender más sobre los mensajes que envía Jenkins a Slack, consulta el siguiente enlace:
+
+  :link: [Slack notification plugin](https://www.jenkins.io/doc/pipeline/steps/slack/#slacksend-send-slack-message)
 
 
 
-   ![](img/SCM.JPG)
-
-   *En caso de que el repositorio fuera privado, necesariamente tenemos que añadir las credenciales de acceso*.
-
-
-
-9. Ahora sí ya podemos construir nuestro proyecto con la opción  :clock10:Construir ahora. Una vez finalizado deberíamos ver lo siguiente:
-
-   ![](img/Build.JPG)
-   
-   
-   
-      *En el caso de que algún paso fallase, este aparecería en color rojo y finalizaría la ejecución. Por lo tanto, no se ejecutarían los pasos siguientes.*
-
-
-
-### :eye: ​ANÁLISIS DEL JENKINSFILE :eye:
+### 	:eye: Análisis del JenkinsFile :eye:
 
 ```
 pipeline {
@@ -105,36 +73,59 @@ pipeline {
   tools {nodejs "node"}
     
   stages {
-    /*
-    1º Clonado de Git
-    */
     stage('Cloning Git') {
       steps {
+      /*
+      Enviamos a Slack una notificación de color amarillo que indica el inicio, y va a contener:
+      1) El nombre de la tarea
+      2) El número de construción
+      3) Y un enlace a la construción para poder consultarla en cualquier momento
+      */
+        slackSend (color: '#FFFF00', message: "INICIO: Tarea '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
         git 'https://github.com/Diegoxlus/node-jenkins'
       }
     }
-    /*
-2º Instalamos el proyecto, necesario porque en Git no se guardan todas las dependencias   
-del proyecto, en concreto la carpeta node_modules no se sube a Git por su tamaño.  
-La instalación de chai es necesaria hacerla de forma local antes de lanzar los tests.
-    
-    */  
+        
     stage('Install dependencies') {
       steps {
         sh 'npm install'
         sh 'npm install --save-dev chai'
-
+        /*
+        Si la instalación se realiza correctamente se lo notificamos a Slack en color verde.
+        */
+        slackSend (color: '#00FF00', message: "Instalación de dependencias")
       }
     }
-/*
-Por último, lanzamos los tests.
-*/
      
     stage('Test') {
       steps {
          sh 'npm test'
+         /*
+        Si los test se pasan correctamente se lo notificamos a Slack en color verde.
+        */
+         slackSend (color: '#00FF00', message: "Tests")
       }
     }      
   }
+  post {
+    success{
+    /*
+     Si la integración se realiza de forma correcta se lo notificamos a Slack en color verde.
+        */
+        slackSend (color: '#00FF00', message: ":white_check_mark:INTEGRACIÓN CORRECTA :white_check_mark:")
+    }
+    failure {
+    /*
+    Si la integración falla se lo notificamos a Slack en color rojo.
+        */
+        slackSend (color: '#00FF00', message: ":red_circle: INTEGRACIÓN INCORRECTA :red_circle:")
+    }
+  }
 }
 ```
+
+
+
+- Si probamos ahora a construir nuestro proyecto desde Jenkins, deberíamos ver lo siguiente:
+
+  ![](img/SlackOK.jpg)

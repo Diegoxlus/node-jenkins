@@ -4,7 +4,6 @@ pipeline {
   tools {nodejs "node"}
     
   stages {
-
     stage('Cloning Git') {
       steps {
         slackSend (color: '#FFFF00', message: "INICIO: Tarea '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
@@ -35,5 +34,4 @@ pipeline {
         slackSend (color: '#00FF00', message: ":red_circle: INTEGRACIÓN INCORRECTA :red_circle:")
     }
   }
-
 }
