@@ -107,6 +107,10 @@ pipeline {
       }
     }      
   }
+  /*
+  post, se ejecuta siempre al finalizar todos los stage, podemos ejecutar acciones en el caso
+  de que todo vaya bien (success), o en caso de que ocurra algún error (failure).
+  */
   post {
     success{
     /*
