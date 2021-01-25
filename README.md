@@ -1,6 +1,6 @@
 # :family_man_boy_boy::family_man_girl:Integración con Slack :family_man_girl::family_man_boy_boy:
 
-## :arrow_forward: Objetivo: Integrar Slack en nuestro proyecto, con la finalidad de que todo el equipo esté al tanto del estado de cada integración.
+## :arrow_forward: Objetivo: Integrar Slack en nuestro proyecto con la finalidad de que todo el equipo esté al tanto del estado de cada integración.
 
 ### :book: Pasos a seguir:
 
@@ -16,7 +16,7 @@
 
   ![](img/AjustesSlack.jpg)
 
-- Y seleccionamos la opción "Añadir a Slack" que se ve en la imágen
+- Y seleccionamos la opción "Añadir a Slack" que se ve en la imágen.
 
   ![](img/AñadirJenkins.JPG)
 
@@ -40,7 +40,7 @@
 
   :yellow_heart: En amarillo tenemos las credenciales, donde vamos a introducir el token ofrecido por Slack, lo veremos mas adelante...
 
-  :blue_heart: En azul tenemos el canal donde se van a publicar las notificaciones, en mi caso tengo en mi espacio de Slack un canal llamado enseñanza.
+  :blue_heart: En azul tenemos el canal donde se van a publicar las notificaciones, en nuestro caso tenemos en el espacio de Slack un canal llamado enseñanza.
 
   
 
@@ -50,7 +50,7 @@
 
   
 
-  :green_heart: En color verde tenemos el tipo de secreto que vamos a escoger, en este caso como es un token, seleccionamos "Secret text"-
+  :green_heart: En color verde tenemos el tipo de secreto que vamos a escoger, en este caso como es un token, seleccionamos "Secret text".
 
   :yellow_heart: En amarillo tenemos el token almacenado en el portapaples (Siempre puede volver a Slack y consultar el token). Simplemente tenemos que pegarlo.
 
