@@ -1,4 +1,4 @@
-# Servidor Jenkins en Rasperry Pi (NodeJS)
+# Servidor Jenkins en Rasperry Pi
 
 ## :information_source: Con este ejemplo, os vamos a mostrar como automatizar el proceso de clonado, instalación y por último pruebas (Con Mocha y Chai) en una pequeña aplicación en NodeJS.
 
