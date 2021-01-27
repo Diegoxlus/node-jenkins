@@ -34,11 +34,6 @@ pipeline {
             withSonarQubeEnv('SonarQube') {
             sh "${scannerHome}/bin/sonar-scanner"
             sonar.projectKey=node-jenkins
-            sonar.projectName=node-jenkins analyzed by SonarQube
-            sonar.projectVersion=1.0
-            sonar.sources=app
-            sonar.language=javascript
-            sonar.sourceEncoding=UTF-8
             }
         }
     }
