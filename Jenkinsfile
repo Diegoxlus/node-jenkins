@@ -30,7 +30,6 @@ pipeline {
         steps {
             script {
                 scannerHome = tool 'SonarQube Scanner 4.6.0.2311'
-                sonar.projectKey=node-jenkins
             }
             withSonarQubeEnv('SonarQube') {
             sh "${scannerHome}/bin/sonar-scanner"
