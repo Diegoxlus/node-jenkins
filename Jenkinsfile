@@ -1,8 +1,8 @@
 pipeline {
   agent any
-    
+
   tools {nodejs "node"}
-    
+
   stages {
     stage('Cloning Git') {
       steps {
@@ -33,6 +33,19 @@ pipeline {
             }
             withSonarQubeEnv('SonarQube') {
             sh "${scannerHome}/bin/sonar-scanner"
+            # Required metadata
+            sonar.projectKey=node-jenkins
+            sonar.projectName=node-jenkins analyzed by SonarQube
+            sonar.projectVersion=1.0
+
+            # Comma-separated paths to directories with sources (required)
+            sonar.sources=app
+
+            # Language
+            sonar.language=javascript
+
+            # Encoding of the source files
+            sonar.sourceEncoding=UTF-8
             }
         }
     }
