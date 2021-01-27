@@ -33,7 +33,7 @@ pipeline {
             }
             withSonarQubeEnv('SonarQube') {
             sh "${scannerHome}/bin/sonar-scanner"
-            sonar.projectKey=node-jenkins
+            sonar.projectKey=nodejenkins
             }
         }
     }
