@@ -4,14 +4,6 @@ pipeline {
   tools {nodejs "node"}
 
   stages {
-    stage('Cloning Git') {
-      steps {
-        slackSend (color: '#FFFF00', message: "INICIO: Tarea '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
-        git 'https://github.com/Diegoxlus/node-jenkins.git'
-        sh 'ls'
-      }
-    }
-
     stage('Install dependencies') {
       steps {
         sh 'npm install'

@@ -1,20 +1,24 @@
 # :family_man_boy_boy::family_man_girl:Integración con Slack :family_man_girl::family_man_boy_boy:
 
-## :arrow_forward: Objetivo: Integrar Slack en nuestro proyecto con la finalidad de que todo el equipo esté al tanto del estado de cada integración.
+## :arrow_forward: Objetivo: Integrar SonarQube en nuestro proyecto con la finalidad de que todo el equipo esté al tanto de la calidad del código.
 
 ### :book: Pasos a seguir:
 
-- Instalar el plugin Slack Notification
+- Descargar SonarQube en nuestra Raspberry y extraerlo en donde queramos, para este tutorial vamos a tomar la ruta "/home/pi/sonarqube", para ello renombramos la carpeta "sonarquebe-x.x.x.xxxxx" a sonar, y el "sonarquebe-application-x.x.x.xxxxx.jar" que se encuentra dentro de la carpeta ""/sonarquebe/lib" a "sonar.jar". 
 
-  ​	:link: ​[Plugin Slack Notification](https://plugins.jenkins.io/slack/)
+- Iniciar sonar cada vez que se arranca la Raspberry, para ello editamos el fichero rc.local que se encuentra en /etc:
 
-- Crear un nuevo espacio de trabajo
+  `sudo nano /etc/rc.local`
 
-  ​	:link: [Crear espacio de trabajo en Slack](https://slack.com/get-started#/create)
+  Antes del "exit 0" añadimos la siguiente linea:
 
-- Integrar Jenkins en Slack, para ello vamos a nuestra cuenta, y seleccionamos la opción :electric_plug:Configurar aplicaciones.
+  `java -jar /home/pi/sonarquebe/lib/sonar.jar`
 
-  ![](img/AjustesSlack.jpg)
+  
+
+- Instalar el plugin "SonarQuebe Scanner" en el aparatado Plugins de Jenkins.
+
+  ![](img/plugin.JPG)
 
 - Y seleccionamos la opción "Añadir a Slack" que se ve en la imágen.
 
