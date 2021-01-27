@@ -34,7 +34,6 @@ pipeline {
             }
             withSonarQubeEnv('SonarQube') {
             sh 'ls'
-            sh 'cd node-jenkins'
             sh "${scannerHome}/bin/sonar-scanner"
             }
         }
