@@ -11,17 +11,6 @@ pipeline {
       }
     }
 
-    stage('SonarQube analysis') {
-          steps {
-            script {
-              scannerHome = tool 'SonarQube Scanner 4.6'
-            }
-            withSonarQubeEnv('SonarQube') {
-              sh "${scannerHome}/bin/sonar-scanner"
-            }
-          }
-        }
-        
     stage('Install dependencies') {
       steps {
         sh 'npm install'
@@ -35,7 +24,19 @@ pipeline {
          sh 'npm test'
          slackSend (color: '#00FF00', message: "Tests")
       }
-    }      
+    }
+
+    stage('SonarQube analysis') {
+        steps {
+            script {
+                scannerHome = tool 'SonarQube Scanner 4.6.0.2331'
+            }
+            withSonarQubeEnv('SonarQube') {
+            sh "${scannerHome}/bin/sonar-scanner"
+            }
+        }
+    }
+
   }
   post {
     success{
