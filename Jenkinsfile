@@ -32,7 +32,7 @@ pipeline {
                 scannerHome = tool 'SonarQube Scanner 4.6.0.2311'
             }
             withSonarQubeEnv('SonarQube') {
-            sh 'pwd'
+            sh 'ls'
             sh 'cd node-jenkins'
             sh "${scannerHome}/bin/sonar-scanner"
             }
