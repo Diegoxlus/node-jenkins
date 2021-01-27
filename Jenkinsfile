@@ -16,7 +16,7 @@ pipeline {
             script {
               scannerHome = tool 'SonarQube Scanner 4.6.0.2311'
             }
-            withSonarQubeEnv('SonarQube Scanner') {
+            withSonarQubeEnv('SonarQube Scanner 4.6.0.2311') {
               sh "${scannerHome}/bin/sonar-scanner"
             }
           }
