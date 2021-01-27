@@ -4,11 +4,15 @@
   "description": "Prueba test",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --reporter spec"
+    "test": "mocha app/test/*.js",
+    "coverage": "nyc --reporter=lcov npm run test"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "mocha": "^8.2.1"
+  },
+  "devDependencies": {
+    "nyc": "^15.1.0"
   }
 }
