@@ -24,19 +24,20 @@ pipeline {
                 scannerHome = tool 'SonarQube Scanner 4.6.0.2311'
             }
             withSonarQubeEnv('SonarQube') {
-            sh 'ls'
             sh "${scannerHome}/bin/sonar-scanner"
             }
         }
     }
-
+    
   }
   post {
     success{
         slackSend (color: '#00FF00', message: ":white_check_mark:INTEGRACIÓN CORRECTA :white_check_mark:")
     }
+
     failure {
         slackSend (color: '#00FF00', message: ":red_circle: INTEGRACIÓN INCORRECTA :red_circle:")
     }
+
   }
 }
