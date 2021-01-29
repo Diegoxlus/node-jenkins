@@ -73,7 +73,7 @@ pipeline {
   tools {nodejs "node"}
     
   stages {
-    stage('Cloning Git') {
+    stage('Travis Start') {
       steps {
       /*
       Enviamos a Slack una notificación de color amarillo que indica el inicio, y va a contener:

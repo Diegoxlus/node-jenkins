@@ -5,6 +5,12 @@ pipeline {
     
   stages {
 
+    stage('Travis Start') {
+      steps {
+         slackSend (color: '#FFFF00', message: "INICIO: Tarea '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
+      }
+    }
+
     stage('Install dependencies') {
       steps {
         sh 'npm install'
