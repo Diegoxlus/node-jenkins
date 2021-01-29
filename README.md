@@ -105,16 +105,8 @@ pipeline {
   tools {nodejs "node"}
     
   stages {
-    /*
-    1º Clonado de Git
-    */
-    stage('Cloning Git') {
-      steps {
-        git 'https://github.com/Diegoxlus/node-jenkins'
-      }
-    }
-    /*
-2º Instalamos el proyecto, necesario porque en Git no se guardan todas las dependencias   
+   
+Instalamos el proyecto, necesario porque en Git no se guardan todas las dependencias   
 del proyecto, en concreto la carpeta node_modules no se sube a Git por su tamaño.  
 La instalación de chai es necesaria hacerla de forma local antes de lanzar los tests.
     
