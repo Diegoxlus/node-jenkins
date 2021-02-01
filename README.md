@@ -25,7 +25,6 @@
 - Instalar el plugin "SonarQuebe Scanner" en el aparatado *Plugins* de Jenkins.
 
   ![](img/plugin.JPG)
-
   
 - A continuación, vamos a añadir el Token que nos va a permitir establecer la conexión entre Jenkins y SonarQube. Para ello, vamos a Administración :arrow_right: Security. Veremos el usuario *admin*, y un apartado "Tokens", desplegamos las opciones y generamos uno nuevo con un nombre. Posteriormente, copiaremos el valor del Token al portapapeles para emplearlo más tarde.
 
