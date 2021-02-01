@@ -5,7 +5,6 @@ exports.rgbToHex = function(red, green, blue) {
     var blueHex  = blue.toString(16);
 
     return pad(redHex) + pad(greenHex) + pad(blueHex);
-
 };
 
 function pad(hex) {
