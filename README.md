@@ -24,7 +24,7 @@
 
 - Instalar el plugin "SonarQuebe Scanner" en el aparatado *Plugins* de Jenkins.
 
-  ![](img/plugin.JPG)
+  ![](img/plugin.jpg)
   
 - A continuación, vamos a añadir el Token que nos va a permitir establecer la conexión entre Jenkins y SonarQube. Para ello, vamos a Administración :arrow_right: Security. Veremos el usuario *admin*, y un apartado "Tokens", desplegamos las opciones y generamos uno nuevo con un nombre. Posteriormente, copiaremos el valor del Token al portapapeles para emplearlo más tarde.
 
@@ -46,7 +46,7 @@
 
 - Ahora vamos a hablar de numerosos problemas que pueden surgir durante la instalación, por ello creemos que es necesario explicar cómo funciona Jenkins con Sonar.
 
-  ![](img/Esquema.JPG)
+  ![](img/Esquema.jpg)
 
   
 
@@ -56,7 +56,7 @@
 
   
 
-  :blue_circle: En color azul tenemos el servidor SonarQube, que analiza la calidad del código y muestra la cobertura del proyecto gracias al fichero "lcov.info" que le ofrece Jenkins.
+  :blue_heart: En color azul tenemos el servidor SonarQube, que analiza la calidad del código y muestra la cobertura del proyecto gracias al fichero "lcov.info" que le ofrece Jenkins.
 
   
 
