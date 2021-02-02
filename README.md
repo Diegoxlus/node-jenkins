@@ -1,4 +1,4 @@
-# :family_man_boy_boy::family_man_girl:Integración con SonarQube :family_man_girl::family_man_boy_boy:
+# :family_man_boy_boy::family_man_girl: Crear un hook a nuestro repositiorio de Git :family_man_girl::family_man_boy_boy:
 
 ## :arrow_forward: Objetivo: Integrar SonarQube en nuestro proyecto con la finalidad de que todo el equipo esté al tanto de la calidad del código.
 
