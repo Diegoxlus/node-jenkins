@@ -4,8 +4,9 @@ pipeline {
   tools {nodejs "node"}
 
   stages {
-    stage('Install dependencies') {
+    stage('Inicio +Install dependencies') {
       steps {
+        slackSend (color: '#731CE8', message: "${GIT_COMMITTER_NAME} ha hecho un comit en la rama ${GIT_LOCAL_BRANCH}. LINK: ${GIT_URL}")
         sh 'npm install'
         slackSend (color: '#00FF00', message: "Instalación de dependencias")
       }
