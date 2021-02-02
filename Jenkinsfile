@@ -7,7 +7,7 @@ pipeline {
     stage('Inicio +Install dependencies') {
       steps {
         sh 'npm install'
-        slackSend (color: '#00FF00', message: "Instalación de dependencias")
+        slackSend (color: '#00FF00', message: "Instalación de  dependencias")
       }
     }
      
