@@ -6,6 +6,7 @@
 
 - Descargar SonarQube en nuestra Raspberry y extraerlo donde queramos. Para este tutorial vamos a tomar la ruta */home/pi/sonarqube*, para ello renombramos la carpeta *sonarquebe-x.x.x.xxxxx* a "sonar", y el *sonarquebe-application-x.x.x.xxxxx.jar*, que se encuentra dentro de la carpeta */sonarquebe/lib*, a "sonar.jar". 
 
+
 - Iniciar sonar cada vez que se arranca la Raspberry, para ello editamos el fichero *rc.local* que se encuentra en */etc*:
 
   `sudo nano /etc/rc.local`
