@@ -12,7 +12,7 @@ pipeline {
       }
     }
      
-    stage('Test') {
+    stage('Test2') {
       steps {
          sh 'npm run coverage'
          slackSend (color: '#00FF00', message: "Tests")
